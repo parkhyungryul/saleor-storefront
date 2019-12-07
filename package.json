@@ -9,7 +9,7 @@
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "@lingui/react": "^2.8.3",
-    "apollo": "^2.6.2",
+    "apollo": "^2.21.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.5.1",
@@ -105,7 +105,7 @@
     "babel-plugin-require-context-hook": "^1.0.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
-    "cypress": "^3.2.0",
+    "cypress": "^3.7.0",
     "cypress-testing-library": "^3.0.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
