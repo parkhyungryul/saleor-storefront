@@ -29,3 +29,18 @@ export const tokenVeryficationMutation = gql`
     }
   }
 `;
+
+// Kakao login mutation
+export const socialAuthMutation = gql`
+ ${userFragment}
+ mutation SocialAuth($accessToken: String!, $provider: String!){
+   socialAuth(accessToken: $$accessToken, provider: $provider){
+     social{
+       user{
+         ...User
+       }
+     }
+     token
+   }
+ }
+`;

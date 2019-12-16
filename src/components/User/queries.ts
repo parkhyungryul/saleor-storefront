@@ -2,7 +2,12 @@ import gql from "graphql-tag";
 
 import { checkoutAddressFragment } from "../../checkout/queries";
 import { TypedMutation } from "../../core/mutations";
-import { TokenAuth, TokenAuthVariables } from "./types/TokenAuth";
+import {
+  SocialAuth,
+  SocialAuthVariables,
+  TokenAuth,
+  TokenAuthVariables
+} from "./types/TokenAuth";
 
 export const userFragment = gql`
   ${checkoutAddressFragment}
@@ -52,7 +57,26 @@ export const tokenVeryficationMutation = gql`
   }
 `;
 
+export const socialAuthMutation = gql`
+  ${userFragment}
+  mutation SocialAuth($accessToken: String!, $provider: String!) {
+    socialAuth(accessToken: $accessToken, provider: $provider) {
+      social {
+        user {
+          ...User
+        }
+      }
+      token
+    }
+  }
+`;
+
 export const TypedTokenAuthMutation = TypedMutation<
   TokenAuth,
   TokenAuthVariables
 >(tokenAuthMutation);
+
+export const TypedSocialAuthMutation = TypedMutation<
+  SocialAuth,
+  SocialAuthVariables
+>(socialAuthMutation);

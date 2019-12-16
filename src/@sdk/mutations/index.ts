@@ -1,6 +1,6 @@
 import {
   ApolloClient,
-  MutationOptions as ApolloMutationOptions
+  MutationOptions as ApolloMutationOptions,
 } from "apollo-client";
 import gql from "graphql-tag";
 
@@ -11,41 +11,46 @@ import * as User from "./user";
 
 import {
   CreateCheckout,
-  CreateCheckoutVariables
+  CreateCheckoutVariables,
 } from "./types/CreateCheckout";
 import {
   DeleteUserAddress,
-  DeleteUserAddressVariables
+  DeleteUserAddressVariables,
 } from "./types/DeleteUserAddress";
 
 import {
   CreateUserAddress,
-  CreateUserAddressVariables
+  CreateUserAddressVariables,
 } from "./types/CreateUserAddress";
 
 import {
   SetCustomerDefaultAddress,
-  SetCustomerDefaultAddressVariables
+  SetCustomerDefaultAddressVariables,
 } from "./types/SetCustomerDefaultAddress";
 
 import {
   UpdateUserAddress,
-  UpdateUserAddressVariables
+  UpdateUserAddressVariables,
 } from "./types/UpdateUserAddress";
 
-import { TokenAuth, TokenAuthVariables } from "./types/TokenAuth";
+import {
+  SocialAuth,
+  SocialAuthVariables,
+  TokenAuth,
+  TokenAuthVariables,
+} from "./types/TokenAuth";
 import {
   UpdateCheckoutBillingAddress,
-  UpdateCheckoutBillingAddressVariables
+  UpdateCheckoutBillingAddressVariables,
 } from "./types/UpdateCheckoutBillingAddress";
 import {
   UpdateCheckoutShippingAddress,
-  UpdateCheckoutShippingAddressVariables
+  UpdateCheckoutShippingAddressVariables,
 } from "./types/UpdateCheckoutShippingAddress";
 
 import {
   PasswordChange,
-  PasswordChangeVariables
+  PasswordChangeVariables,
 } from "./types/PasswordChange";
 
 import { AccountUpdate, AccountUpdateVariables } from "./types/AccountUpdate";
@@ -117,6 +122,16 @@ export const MUTATIONS = {
     client.mutate({
       mutation: gql`
         ${User.changeUserPassword}
+      `,
+      ...options,
+    }),
+  SocialAuth: <TCacheShape>(
+    client: ApolloClient<TCacheShape>,
+    options: MutationOptions<SocialAuth, SocialAuthVariables>
+  ) =>
+    client.mutate({
+      mutation: gql`
+        ${Auth.socialAuthMutation}
       `,
       ...options,
     }),

@@ -146,7 +146,7 @@ export interface TokenAuth_tokenCreate {
 export interface TokenAuth {
   /**
    * Mutation that authenticates a user and returns token and user data.
-   * 
+   *
    * It overrides the default graphql_jwt.ObtainJSONWebToken to wrap potential
    * authentication errors in our Error type, which is consistent to how the rest of
    * the mutation works.
@@ -157,4 +157,24 @@ export interface TokenAuth {
 export interface TokenAuthVariables {
   email: string;
   password: string;
+}
+
+export interface SocialAuth_socialAuth_social {
+  __typename: "SocialType";
+  user: TokenAuth_tokenCreate_user | null;
+}
+
+export interface SocialAuth_socialAuth {
+  __typename: "SocialAuth";
+  token: string | null;
+  social: SocialAuth_socialAuth_social | null;
+}
+
+export interface SocialAuth {
+  socialAuth: SocialAuth_socialAuth | null;
+}
+
+export interface SocialAuthVariables {
+  accessToken: string;
+  provider: string;
 }
